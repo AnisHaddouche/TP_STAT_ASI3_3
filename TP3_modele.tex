@@ -1,0 +1,183 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage[margin=3cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+
+\lstset{
+    breaklines=true,
+    numbers=left,
+    frame=single
+    }
+
+\pagestyle{fancy}
+\fancyhead[L]{NOM(S) et Prénom(s) ---}
+\fancyfoot{}
+
+\begin{document}
+
+\begin{center}
+    {\Huge Analyse multidimensionnelle - Variables qualitatives}
+\end{center}
+
+\section{Les données}
+
+Type des variables :
+\begin{description}
+    \item[Survived]
+    \item[Pclass]
+    \item[Sex]
+    \item[Age]
+    \item[SibSp]
+    \item[Parch]
+    \item[Fare]
+    \item[Embarked]
+\end{description}
+
+\begin{table}[h] 
+    \centering
+    \begin{tabular}{l|c|c}
+        Variable & Nombre de champs & Nombre de données manquantes\\ \hline
+        & & \\ % Recopier cette ligne pour chaque variable qualitative
+    \end{tabular}
+\end{table}
+
+\begin{figure}[h!] %Représentation graphique de SibSp
+    \centering
+    %\includegraphics[width=8cm]{image.png}
+\end{figure}
+
+\begin{figure}[h!] %Représentation graphique de Embarked
+    \centering
+    %\includegraphics[width=8cm]{image.png}
+\end{figure}
+
+\begin{figure}[h!] %Représentation graphique de Fare
+    \centering
+    %\includegraphics[width=8cm]{image.png}
+\end{figure}
+
+\newpage
+\section{Tableaux de contingence}
+\subsection{La survie selon le genre}
+
+\begin{table}[h!]  % A remplir à la main, avant d'utiliser la fonction crosstab
+    \centering
+    \begin{tabular}{l|c|c}
+         & Female & Male\\ \hline
+        Survived & & \\
+        Did not survived & & \\
+    \end{tabular}
+\end{table}
+
+
+
+% Analyser ce que vous observez et proposer une hypothèse
+
+\subsection{La survie selon la classe et le port d'embarquement}
+
+\begin{table}[h!]  % A remplir avec la sortie de crosstab
+    \centering
+    \begin{tabular}{l|c|c|c}
+        & Classe 1 & Classe 2 & Classe 3\\ \hline
+        Survived & & & \\
+        Did not survived & & & \\
+    \end{tabular}
+\end{table}
+
+\begin{table}[h!]  % A remplir avec la sortie de crosstab
+    \centering
+    \begin{tabular}{l|c|c|c|c}
+        & 67 & 81 & 83 & C\\ \hline
+        Survived & & & & \\
+        Did not survived & & & & \\
+    \end{tabular}
+\end{table}
+
+% Formuler des hypothèses sur vos observations
+
+\newpage
+\section{Dépendance de variables}
+
+Interprétation des valeurs des coefficients :
+\begin{description}
+    \item[$\chi^{2}$] 
+    \item[$\Phi^{2}$] 
+    \item[Tschuprow] 
+    \item[Cramer] 
+\end{description}
+
+% Copier-coller les tableaux d'interdépendance obtenus dans Matlab pour chaque coefficient
+% Chi2
+\begin{lstlisting}[numbers=none] 
+\end{lstlisting}
+
+%Phi2
+\begin{lstlisting}[numbers=none]
+\end{lstlisting}
+
+%Tschuprow
+\begin{lstlisting}[numbers=none]
+\end{lstlisting}
+
+%Cramer
+\begin{lstlisting}[numbers=none]
+\end{lstlisting}
+
+% Commenter vos hypothèses faites précédemment à l'aide de ces tableaux
+
+\newpage
+
+
+\begin{table}[h!]  % A adapter selon le nombre de modalités de chaque variable choisie
+    \centering
+    \begin{tabular}{l|c|c|c|c}
+        &  &  &  & \\ \hline
+        &  &  &  & \\
+        &  &  &  & \\
+    \end{tabular}
+\end{table}
+
+
+\section{Tableaux de Burt}
+
+% Faites un copier-coller de votre tableau ou prenez une capture d'écran (au choix)
+\begin{lstlisting}[numbers=none]
+\end{lstlisting}
+
+\begin{figure}[h!] %Représentation graphique des profils-colonnes précédents
+    \centering
+    %\includegraphics[width=8cm]{image.png}
+\end{figure}
+
+% A décommenter si vous arrivez là !
+
+%\newpage 
+%\section{Bonus pour les plus rapides}
+%
+%
+%\begin{figure}[h!] %Représentation graphique de Age, avec classes d'amplitudes égales
+%    \centering
+%    %\includegraphics[width=8cm]{image.png}
+%\end{figure}
+%
+%\begin{figure}[h!] %Représentation graphique de Age, avec classes d'amplitudes variables
+%    \centering
+%    %\includegraphics[width=8cm]{image.png}
+%\end{figure}
+%
+%% Commenter ces deux graphiques
+%
+%% Explorer les relations entre les variables quantitatives des données
+
+\newpage
+\appendix
+
+\section{Code}
+%\lstinputlisting[language=Matlab]{sourceTP.m}
+
+\end{document}

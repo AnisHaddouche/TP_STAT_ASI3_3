@@ -1,0 +1,203 @@
+\documentclass[11pt]{exam}
+\RequirePackage{amssymb, amsfonts, amsmath, latexsym, verbatim, xspace, setspace}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[]{geometry}
+\usepackage{booktabs}
+%\geometry {portrait, includehead, left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\hypersetup{
+    unicode=false,          % non-Latin characters in Acrobat?s bookmarks
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=magenta           % color of external links
+}
+
+\pagestyle{headandfoot}
+
+\def\dbC{{\mathrm{I\hskip-4.7pt C}}}
+\def\dbR{{\mathrm{I\hskip-2.2pt R}}}
+\def\dbN{{\mathrm{I\hskip-2.2pt N}}}
+\def\esp{{\mathrm{I\hskip-1.5pt E}}}
+\def\pr{{\mathrm{I\hskip-2.2pt P}}}
+\def\clL{{\mathrm{\cal L}}}
+\def\cltL{{\mathrm{\widetilde{\cal L}}}}
+\def\w{{\mathbf{w}}}
+\def\x{{\mathbf{x}}}
+\def\Blambda{{\mathbf{\lambda}}} 
+
+% =================================================================================
+\newcommand{\moncadre}[1]%
+{\fbox{
+    \begin{minipage}{400pt} #1
+    \end{minipage}
+}}
+
+%\figgauche{LargeurImage}{FichierImage.eps}{TexteADroite}
+%
+\newlength\jataille
+\newcommand{\figgauche}[3]%
+{\jataille=1\linewidth\advance\jataille by -#1
+      \advance\jataille by -.5cm
+      \begin{minipage}[c]{6pc}
+      \includegraphics[width=6pc]{#2}
+      \end{minipage}\hfill
+      \begin{minipage}[c]{30pc} #3
+      \end{minipage}
+		~\newline{}
+}
+
+
+% =================================================================================
+\extraheadheight{50pt}
+\extrafootheight{-70pt}
+\firstpageheader{\includegraphics[width=100pt]{logoinsa} \\
+  B. Gaüzère, \\ A. Rogozan}
+{\Large \bf ~~TP \\ 
+  Statistiques Descriptives \\ Analyse multidimensionnelle \\ de Données Qualitatives}
+{\includegraphics[width=90pt]{logoasi} \\ $ 3^{\mbox{\footnotesize
+      ème}}$ année}
+\runningheader{ASI3}{Stats}{Analyse multi dimensionnell}
+\headrule
+\footer{}{}{p.\thepage/\numpages}
+
+% Here's where you edit the Class, Exam, Date, etc.
+\newcommand{\lesson}{Statistiques}
+\newcommand{\chapter}{Statistiques descriptives}
+\newcommand{\class}{ASI 3}
+\newcommand{\semestre}{Semestre 5}
+\newcommand{\authors}{B. Gauzere, A. Rogozan}
+
+% For an exam, single spacing is most appropriate
+% \singlespacing
+% \onehalfspacing
+% \doublespacing
+
+% For an exam, we generally want to turn off paragraph indentation
+\parindent 0ex
+\newcommand{\matlab}[1]{ \verb|>>| #1 }
+\begin{document} 
+
+\section{Les données }
+Les données que nous allons analyser dans ce TP sont extraites de \url{https://github.com/caesar0301/awesome-public-datasets} et
+concerne les caractéristiques des passagers du Titanic. La description
+des données originales est disponible sur cette page web :
+\url{https://www.kaggle.com/c/titanic/data}. 
+
+%Ce TP concerne l'analyse multidimensionnelle de données
+%qualitatives. Par conséquent, les données originales ont été en parti
+%retraitées afin d'inclure seulement des données qualitatives. Vous
+%pouvez récupérez ces données en téléchargeant le fichier
+%\verb|titanic-quali.csv| sur Moodle. 
+
+%\begin{table}[h]
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    Champ & Libellé & Signification \\
+%    \midrule
+%    1 & Survie & 0 : Décédé, 1 : survivant \\
+%    2 &  Classe &  Indique la classe du passager : 1,2 ou 3ème classe} \\
+%    3 & Genre & 0 : féminin, 1 : masculin\\
+%    4 & Age & 0 : Inconnu, 1 : bébé, 2 : adoslescent, 3 : adulte, 4 :
+%              personne agée.\\
+%    5 & Frères/s\oe urs à bord & 0 : aucun, 1 : Un, 2 : plus de
+%                                      un \\
+%    6 & Parents à bord & 0 : aucun, 1 : Un, 2 : plus de
+%                                      un \\
+%    7 & Port d'embarquement & 67 : Cherbourg, 81 : Queenstown, 83 :
+%                              Southampton\\ 
+%    \bottomrule
+% \end{tabular}
+%  \caption{Données du fichier titanic-quali.csv}
+%  \label{tab:data}
+%\end{table}
+
+\begin{questions}
+  \question Charger les données et visualisez les données. Controlez le
+  nombre d'entrées, le nombre de champs et leur étendue.
+  \question Enlever la variable "Fare".
+  \question Recoder la variable "Sex" en variable binaire (male= 0, female=1).
+  \question Remplacer les valeurs manquantes dans la variable age par 0.
+  \question Transformer les variables "Sex" et "Embarked" en entier (int)
+\end{questions}
+
+\section{Tableaux de contingence}
+
+\subsection{La survie selon le genre}
+\begin{questions}
+  \question Calculez le tableau de contingence sur la survie \emph{vs}
+  le genre des passagers. 
+%  Profitez de la qualité binaire des données
+%  pour calculez le tableau de contingence par une multiplication de matrices.
+  \question Analysez ce que vous observez et proposez une hypothèse.
+\end{questions}
+
+\subsection{La survie selon la classe et le port d'embarquement}
+\begin{questions}
+  \question Calculez le tableau de contingence sur la survie \emph{vs}
+  la classe des passagers.
+
+%  \emph{Aide :}
+%  \begin{itemize}
+%  \item \verb| >> help histc|
+%  \end{itemize}
+  \question Calculez le tableau de contingence sur la survie \emph{vs}
+  le port d'embarquement.
+  \question Formulez des hypothèses sur vos observations.
+\end{questions}
+
+\section{Dépendance de variables}
+
+\begin{questions}
+  \question Implémentez le calcul du $\chi^2$ et des mesures issues du
+  $ \chi^2$ :
+  \begin{itemize}
+  \item $\Phi^2$,
+  \item Coefficient de Tschuprow,
+  \item Coefficient de Cramer.
+  \end{itemize}
+  \question Validez on invalidez vos hypothèses faites dans la section suivante.
+  \question Pour chaque mesure , calculez un tableau présentant
+  l'interdépendance pour l'ensemble des variables utilisées.
+  \question Que déduisez vous sur vos hypothèses précédentes ? 
+\end{questions}
+%\section{Profils}
+%\begin{questions}
+%  \question Implémentez le calcul des profils-colonnes pour une paire
+%  de descripteurs de votre choix. 
+%  \question Affichez ces profils-colonnes sous forme de graphiques
+%  (voir figure \ref{fig:profils}). Mettez en relation ce que
+%  vous observez et les hypothèses que vous avez faites
+%\end{questions}
+
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.7\textwidth]{profils}
+%  \caption{Profils-colonnes relatifs à la table de contingence de la
+%    classe des passagers vs au port d'embarquement. }
+%  \label{fig:profils}
+%\end{figure}
+\section{Tableaux de Burt}
+\begin{questions}
+  \question Calculez le tableau de Burt pour l'ensemble des variables
+  et leurs modalités.
+\end{questions}
+\section*{Bonus}
+\begin{questions}
+  \question Pour les plus rapides, récupérez les données originales et
+  effectuez une analyse plus poussée sur le profil des survivants en
+  utilisant les données quantitatives.
+
+\end{questions}
+ \end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
